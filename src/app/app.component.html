@@ -1,3 +1,18 @@
-<h1>
-  {{title}}
-</h1>
+<main-menu></main-menu>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-3">
+        <sub-menu></sub-menu>
+    </div>
+    <div class="col-12 col-md-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted"> &copy; Ruslana Gural {{currentYear}}</span>
+  </div>
+</footer>
