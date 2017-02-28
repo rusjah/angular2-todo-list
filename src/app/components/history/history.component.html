@@ -1,4 +1,34 @@
-<nav class="nav flex-column">
-  <a class="nav-link" href="#">Done</a>
-  <a class="nav-link" href="#">Delated</a>
-</nav>
+<ngb-tabset #t="ngbTabset">
+  <ngb-tab title="History" id="history">
+    <template ngbTabContent>
+      <ul class="list-group" *ngFor="let task of tasks">
+        <li class="list-group-item">
+          Task &ensp;<em>{{task.title}}</em>&ensp; has been &ensp;<strong>{{task.completed === true ? 'completed' : 'deleted'}}</strong>&ensp;
+          on {{ task.updated_at | date:fullDate}}.
+        </li>
+      </ul>
+    </template>
+  </ngb-tab>
+  <ngb-tab id="completed">
+    <template ngbTabTitle><i>Completed</i></template>
+    <template ngbTabContent>
+      <ul class="list-group" *ngFor="let task of tasksCompleted">
+        <li class="list-group-item">
+          Task &ensp;<em>{{task.title}}</em>&ensp; has been &ensp;<strong>completed</strong>&ensp; on {{ task.updated_at
+          | date:fullDate}}.
+        </li>
+      </ul>
+    </template>
+  </ngb-tab>
+  <ngb-tab id="deleted">
+    <template ngbTabTitle><i>Deleted</i></template>
+    <template ngbTabContent>
+      <ul class="list-group" *ngFor="let task of tasksDeleted">
+        <li class="list-group-item">
+          Task &ensp;<em>{{task.title}}</em>&ensp; has been &ensp;<strong>deleted</strong>&ensp; on {{ task.updated_at |
+          date:fullDate}}.
+        </li>
+      </ul>
+    </template>
+  </ngb-tab>
+</ngb-tabset>

@@ -1,11 +1,11 @@
-<h1>Add new task</h1>
+<h2>Add a new task</h2>
 <div class="row">
   <div class="col-md-6">
-    <form class="new-task-form">
+    <form class="new-task-form" #f="ngForm" (submit)="onSubmit(f)">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Enter new task...">
+        <input type="text" class="form-control" name="title" ngModel placeholder="Enter new task...">
         <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button">Create</button>
+        <button class="btn btn-secondary" type="submit">Create</button>
       </span>
       </div>
     </form>

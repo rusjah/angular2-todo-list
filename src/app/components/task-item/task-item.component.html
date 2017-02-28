@@ -1,9 +1,9 @@
 <div class="d-flex justify-content-between bd-highlight mb-2">
   <div class="p-2 bd-highlight">
-    {{task.name}}
+    {{task.title}}
   </div>
   <div class="p-2 bd-highlight">
-    <button class="btn btn-secondary" type="button">Delete</button>
-    <button class="btn btn-secondary" type="button">Done</button>
+    <button class="btn btn-secondary" type="button" (click)="onDelete(task)">Delete</button>
+    <button class="btn btn-secondary" type="button" (click)="onComplete(task)">Done</button>
   </div>
 </div>

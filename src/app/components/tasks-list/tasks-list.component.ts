@@ -1,20 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TaskInterface } from '../../interfaces/task.interface';
-
-const TASKS: TaskInterface[] = [
-  {id: 1, name: "Learn Angular 2", "status": 1},
-  {id: 2, name: "Learn English Lesson", "status": 1},
-  {id: 3, name: "Create Todo List", "status": 1},
-  {id: 4, name: "Learn Node.js", "status": 1},
-  {id: 5, name: "Watch movie", "status": 1}
-];
-
-const TASK_STATUSES = {
-    'active': 1,
-    'done': 2,
-    'deleted': 3
-}
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'tasks-list',
@@ -22,9 +8,19 @@ const TASK_STATUSES = {
   styleUrls: ['./tasks-list.component.css']
 })
 export class TasksListComponent implements OnInit {
-    tasks: TaskInterface[];
 
-    ngOnInit() {
-      this.tasks = TASKS;
-    }
+  tasks: any[];
+
+  constructor(private taskService: TaskService) { }
+
+  ngOnInit() {
+    let subscriber = this.taskService.getTasks()
+      .subscribe((tasks) => {
+        this.tasks = tasks.filter((task: any) => {
+          return task.deleted === false && task.completed === false;
+        });
+      });
+    this.taskService.subscribers.push(subscriber);
+  }
+
 }

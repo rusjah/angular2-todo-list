@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { TaskInterface } from '../../interfaces/task.interface';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'task-item',
@@ -8,6 +8,23 @@ import { TaskInterface } from '../../interfaces/task.interface';
   styleUrls: ['./task-item.component.css']
 })
 export class TaskItemComponent {
-  @Input()
-  task: TaskInterface;
+
+  @Input() task: any;
+  
+  constructor(private taskService: TaskService) { }
+
+  /**
+   * mark task deleted
+   */
+  onDelete(task) {
+    this.taskService.deleteTasks(task);
+  }
+
+  /**
+   * mark task completed 
+   */
+  onComplete(task) {
+    this.taskService.completeTasks(task);
+  }
+  
 }

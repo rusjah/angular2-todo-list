@@ -1,3 +1,6 @@
 li {
-    display: inline-block;
+   display: inline-block;
+}
+.list-group {
+  margin-bottom: 16px;
 }
